@@ -1,0 +1,33 @@
+<ion-content>
+  <ion-grid>
+      <div class="ion-text-end">
+        <ion-button (click)="close()" fill="clear" color="dark">
+          <ion-icon name="close" slot="start"></ion-icon>
+        </ion-button>
+      </div>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="fixed" color="pizza">หมายเลขโต๊ะ</ion-label>
+            {{tableNumber}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="fixed" color="pizza">ชื่อพนักงาน</ion-label>
+            {{empName}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+      <section class="full-width">
+        <ion-button expand="block" shape="round" fill="outline" class="reserv-button-color" (click)='add(tableID)' [disabled]="disabledButton">Add</ion-button>
+      </section>
+
+  </ion-grid>
+</ion-content>

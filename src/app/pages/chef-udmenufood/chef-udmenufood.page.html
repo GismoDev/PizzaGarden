@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="back()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>อัพเดตสถานะเมนูอาหาร</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed">ชื่ออาหาร</ion-label>
+          <ion-label>{{ foodName }}</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-radio-group [(ngModel)]="status">
+          <ion-item>
+            <ion-label>คงเหลือ</ion-label>
+            <ion-radio slot="start" value="0" color="danger"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>หมด</ion-label>
+            <ion-radio slot="start" value="1" color="warning"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-col>
+    </ion-row>
+
+    <section class="full-width">
+      <ion-button expand="block" shape="round" fill="outline" color="danger" (click)='update(statusUpdate)' [disabled]="disabledButton">Update</ion-button>
+    </section>
+
+    <!-- <section class="full-width">
+      <ion-button expand="block" shape="round" fill="outline" color="warning" (click)='pushshowfood()'>Menu</ion-button>
+    </section> -->
+
+  </ion-grid>
+
+</ion-content>

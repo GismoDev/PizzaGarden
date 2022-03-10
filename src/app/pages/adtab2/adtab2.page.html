@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    <ion-button color="pizza" (click)='pushshowpromo()' fill="clear">
+      <ion-icon name="pricetags-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title align="center" color="pizza">เพิ่มโปรโมชั่น</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="signOut()" slot="end">
+        <ion-icon name="caret-down-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label color="pizza">ชื่อโปรโมชั่น</ion-label>
+          <ion-input type="text" placeholder="โปรดระบุชื่อโปรโมชั่น" [(ngModel)]="promoName"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label color="pizza">รายละเอียดโปรโมชั่น</ion-label>
+          <ion-textarea rows="3" cols="20" [(ngModel)]="detail"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed" color="pizza">ส่วนลด</ion-label>
+          <ion-input type="text" placeholder="ส่วนลด" [(ngModel)]="sale"></ion-input><ion-label color="warning">%</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="" color="pizza">วันที่เริ่ม</ion-label>
+          <ion-datetime  display-Format="DD MMMM YYYY" placeholder="select date" [(ngModel)]="Date_start"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="" color="pizza">วันที่สิ้นสุด</ion-label>
+          <ion-datetime  display-Format="DD MMMM YYYY" placeholder="select date" [(ngModel)]="Date_end"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <section class="full-width">
+      <ion-button expand="block" shape="round" fill="outline" color="pizza" (click)='add()' [disabled]="disabledButton">Add</ion-button>
+    </section>
+
+  </ion-grid>
+    
+</ion-content>

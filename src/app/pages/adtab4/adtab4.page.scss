@@ -1,0 +1,18 @@
+.signout-button {
+    color: #ff81e4;
+}
+.add-button{
+    --border-color: #ff81e4;
+    color: #ff81e4;
+}
+.slide {
+    font-size: small;
+    align-self: center;
+    color: darken($color: #7e7e7e, $amount: 0);
+}
+.icon-color{
+    color: darken($color: #000000, $amount: 0);
+}
+.header{
+    background-color: #ff81e4;
+}

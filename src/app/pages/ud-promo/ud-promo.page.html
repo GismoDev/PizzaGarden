@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="pizza" (click)="back()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title color="pizza">อัพเดตโปรโมชั่น</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="" color="pizza">ชื่อโปรโมชั่น</ion-label>
+          <ion-input type="text" placeholder="โปรดระบุชื่อโปรโมชั่น" [(ngModel)]="promoName"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label color="pizza">รายละเอียดโปรโมชั่น</ion-label>
+          <ion-textarea rows="3" cols="20" [(ngModel)]="detail"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed" color="pizza">ส่วนลด</ion-label>
+          <ion-input type="text" placeholder="ส่วนลด" [(ngModel)]="sale"></ion-input><ion-label color="warning">%</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="" color="pizza">วันที่เริ่ม</ion-label>
+          <ion-datetime  display-Format="DD MMMM YYYY" placeholder="select date" [(ngModel)]="Date_start"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="" color="pizza">วันที่สิ้นสุด</ion-label>
+          <ion-datetime  display-Format="DD MMMM YYYY" placeholder="select date" [(ngModel)]="Date_end"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <section class="full-width">
+      <ion-button expand="block" shape="round" fill="outline" color="pizza" (click)='update(idupdate)' [disabled]="disabledButton">Update</ion-button>
+    </section>
+
+  </ion-grid>
+</ion-content>

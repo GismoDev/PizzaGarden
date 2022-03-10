@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="pizza" (click)="back()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title color="pizza">อัพเดตเมนูอาหาร</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed" color="pizza">ชื่ออาหาร</ion-label>
+          <ion-input type="text" placeholder="โปรดระบุชื่ออาหาร" [(ngModel)]="foodName"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed" color="pizza">ราคา</ion-label>
+          <ion-input type="number" placeholder="โปรดระบุราคาอาหาร" [(ngModel)]="price"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-radio-group [(ngModel)]="categoryID">
+          <ion-list-header>
+            <ion-label color="pizza">ประเภท</ion-label>
+          </ion-list-header>
+          <ion-item *ngFor="let view of viewcategory;">
+            <ion-label>{{view.categoryName}}</ion-label>
+            <ion-radio slot="start" color="pizza" [value]="view.categoryID"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-col>
+    </ion-row>
+
+    <section class="full-width">
+      <ion-button expand="block" shape="round" fill="outline" color="pizza" (click)='update(idupdate)' [disabled]="disabledButton">Update</ion-button>
+    </section>
+
+    <!-- <section class="full-width">
+      <ion-button expand="block" shape="round" fill="outline" color="warning" (click)='pushshowfood()'>Menu</ion-button>
+    </section> -->
+
+  </ion-grid>
+    
+</ion-content>

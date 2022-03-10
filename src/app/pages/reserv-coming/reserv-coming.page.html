@@ -1,0 +1,73 @@
+<ion-content>
+  <ion-grid>
+      <div class="ion-text-end">
+        <ion-button (click)="close()" fill="clear" color="dark">
+          <ion-icon name="close" slot="start"></ion-icon>
+        </ion-button>
+      </div>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="fixed" color="pizza">เลขที่จอง</ion-label>
+            {{reservID}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="fixed" color="pizza">หมายเลขโต๊ะ</ion-label>
+            {{tableNumber}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="fixed" color="pizza">ชื่อพนักงาน</ion-label>
+            {{empName}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="fixed" color="pizza">ชื่อลูกค้า</ion-label>
+            {{guestName}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="fixed" color="pizza">จำนวนลูกค้า</ion-label>
+            {{guestAmount}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="fixed" color="pizza">เวลา</ion-label>
+            {{reservTime}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <section class="full-width">
+        <ion-button expand="block" shape="round" fill="outline" color="pizza" (click)='add(tableID)' [disabled]="disabledButton">Add</ion-button>
+      </section>
+
+
+      <section class="full-width">
+        <ion-button expand="block" shape="round" fill="outline" class="reserv-cancel-color" (click)='cancel(reservID,tableID)' [disabled]="disabledButton">Cancel</ion-button>
+      </section>
+
+  </ion-grid>
+</ion-content>

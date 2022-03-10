@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="pizza" (click)="back(idupdate)">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title color="pizza">แก้ไขข้อมูลส่วนตัว</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed" color="pizza">ชื่อ</ion-label>
+          <ion-input type="text" [(ngModel)]="empName"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed" color="pizza">ที่อยู่</ion-label>
+          <ion-textarea rows="3" cols="20" placeholder="" [(ngModel)]="empAddress"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed" color="pizza">Email</ion-label>
+          <ion-input type="email" [(ngModel)]="empEmail"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed" color="pizza">เบอร์โทรศัพท์</ion-label>
+          <ion-input type="number" [(ngModel)]="empTel"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="" color="pizza">เลขบัตรประจำตัวประชาชน</ion-label>
+          <ion-input type="number" [(ngModel)]="empCode"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+
+    <section class="full-width">
+      <ion-button expand="block" shape="round" fill="outline" color="pizza" (click)='update(idupdate)' [disabled]="disabledButton">Update</ion-button>
+    </section>
+
+  </ion-grid>
+
+</ion-content>

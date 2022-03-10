@@ -1,0 +1,35 @@
+ion-slide {
+    height: 100vh;
+    flex-direction: column;
+}
+
+ion-img {
+    max-width: 70vw;
+    max-height: 70vh;
+    overflow: hidden;
+}
+
+.slide-one {
+    background: #FFDAC1;
+    color: #333333;
+}
+
+.slide-two {
+    background: #333333;
+    color: #ffffff;
+}
+
+.labelintro {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.labelintro span {
+    font-size: 14px;
+}
+.labelintro2 span {
+    font-size: 6px;
+}
+.pizza-icon {
+    color: #eb7413;
+}

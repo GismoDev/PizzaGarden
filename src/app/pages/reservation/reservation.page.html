@@ -1,0 +1,59 @@
+<ion-content>
+  <ion-grid>
+      <div class="ion-text-end">
+        <ion-button (click)="close()" fill="clear" color="dark">
+          <ion-icon name="close" slot="start"></ion-icon>
+        </ion-button>
+      </div>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="fixed" color="pizza">หมายเลขโต๊ะ</ion-label>
+            {{tableNumber}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="fixed" color="pizza">ชื่อพนักงาน</ion-label>
+            {{empName}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="fixed" color="pizza">ชื่อลูกค้า</ion-label>
+            <ion-input type="text" [(ngModel)]="guestName"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="fixed" color="pizza">จำนวนลูกค้า</ion-label>
+            <ion-input type="number" [(ngModel)]="guestAmount"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="" color="pizza">เวลาที่จอง</ion-label>
+            <ion-datetime  display-Format="HH:mm น." placeholder="select time" [(ngModel)]="reservTime" (ionChange) = "mydate(reservTime)"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <section class="full-width">
+        <ion-button expand="block" shape="round" fill="outline" class="reserv-button-color" (click)='add()' [disabled]="disabledButton">Add</ion-button>
+      </section>
+
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,39 @@
+ion-icon{
+    size: 100px;
+}
+ion-slide {
+    height: 100vh;
+    flex-direction: column;
+}
+.reserv-button-color{
+    color: #2dd36f;
+    --border-color: #2dd36f;
+}
+.reserv-button-color1{
+    color: #eb445a;
+    --border-color: #eb445a;
+}
+.icon-I{
+    color: rgb(255, 166, 82);
+}
+ion-slides {
+    height: 100%;
+}
+.col-name{
+    color: #ffc409;
+}
+.badge{
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 40px;
+    font-size: 64px;
+}
+.text{
+    position: absolute;
+    top: 23px;
+    right: 15px;
+    font-size: medium;
+    font-weight: bold;
+    color: darken($color: #000000, $amount: 0);
+}

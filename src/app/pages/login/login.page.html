@@ -1,0 +1,60 @@
+<ion-content>
+  <ion-slides paper="true">
+
+    <ion-slide class="slide-one">
+      <ion-img src="/assets/icon/logo-pizza-garden.png"></ion-img>
+      <!-- <h1 class="pizza-icon">Pizza Garden</h1> -->
+      <p class="labelintro">
+        <span>เลื่อนเพื่อล็อคอิน <ion-icon name="arrow-forward-circle-outline"></ion-icon></span>
+      </p>
+      <p class="labelintro2">
+        <span>PIZZA GARDEN © 2020</span>
+      </p>
+    </ion-slide>
+
+    <ion-slide class="slide-two">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title align="center">ล็อคอิน</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content>
+      
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="floating">ชื่อผู้ใช้</ion-label>
+              <ion-input type="text" [(ngModel)]="username"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>    
+      
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="floating">รหัสผ่าน</ion-label>
+              <ion-input type="password" [(ngModel)]="pw"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      
+        <ion-row><ion-col></ion-col></ion-row>
+      
+        <section class="full-width">
+          <ion-button expand="block" shape="round" fill="outline" color="secondary" (click)='signIn()'>เข้าสู่ระบบ</ion-button>
+        </section>
+        <section class="full-width">
+          <ion-button expand="block" shape="round" fill="outline" color="warning" (click)='register()'>สมัครใช้งาน</ion-button>
+        </section>
+      
+      </ion-content>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>
+
+
+
+
+

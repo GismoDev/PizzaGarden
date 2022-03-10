@@ -1,0 +1,293 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title align="center" color="pizza">ออกรายงานสรุปยอดขาย</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-segment (ionChange)="segmentChanged(day)" [(ngModel)]="day" color="pizza">
+      <ion-segment-button value="4" layout="icon-start" color="pizza">
+        <ion-label color="pizza">All</ion-label>
+        <ion-icon name="reader-outline" color="pizza"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="1" layout="icon-start" color="pizza">
+        <ion-label color="pizza">Day</ion-label>
+        <ion-icon name="sunny-outline" color="pizza"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="2" layout="icon-start" color="pizza">
+        <ion-label color="pizza">Month</ion-label>
+        <ion-icon name="today-outline" color="pizza"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="3" layout="icon-start" color="pizza">
+        <ion-label color="pizza">พนักงาน</ion-label>
+        <ion-icon name="people-circle-outline" color="pizza"></ion-icon>
+      </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="day != '1' && day != '2' && day != '3' && day != '4'">
+    <ion-item color="pizza">
+    <ion-grid align-items-center>
+      <ion-row>
+        <ion-col align-self-center align="center" size="2"><ion-label color="light">#</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="3"><ion-label color="light">ยอดขาย</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="3"><ion-label color="light">ประเภท</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="4"><ion-label color="light">วันที่ทำรายการ</ion-label></ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-item>
+    <ion-item *ngFor="let p of viewbill">
+    <ion-grid align-items-center >
+      <ion-row (click)='showOrderDetail(p.orderID)'>
+        <ion-col align="center" size="2">
+          {{p.orderID}}
+        </ion-col>
+  
+        <ion-col align="center" size="3">
+          {{p.billTotal | currency:'THB' }}
+        </ion-col>
+
+        <ion-col align="center" size="3">
+          <ion-icon name="cash-outline" size="large" color="success" *ngIf="p.payment == 'เงินสด'"></ion-icon>
+          <ion-icon name="card-outline" size="large" color="warning" *ngIf="p.payment == 'บัตรเครดิต'"></ion-icon>
+          <!-- <ion-button expand="block"  fill="clear" class="showODT-button-color" (click)='showOrderDetail(p.orderID)'>รายละเอียด</ion-button> -->
+        </ion-col>
+  
+        <ion-col align="center" size="4">
+          {{ p.billDate }}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-item>
+  </div>
+
+  <div *ngIf="day == '4'">
+    <ion-item color="pizza">
+    <ion-grid align-items-center>
+      <ion-row>
+        <ion-col align-self-center align="center" size="2"><ion-label color="light">#</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="3"><ion-label color="light">ยอดขาย</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="3"><ion-label color="light">ประเภท</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="4"><ion-label color="light">วันที่ทำรายการ</ion-label></ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-item>
+    <ion-item *ngFor="let p of viewbill">
+    <ion-grid align-items-center >
+      <ion-row (click)='showOrderDetail(p.orderID)'>
+        <ion-col align="center" size="2">
+          {{p.orderID}}
+        </ion-col>
+  
+        <ion-col align="center" size="3">
+          {{p.billTotal | currency:'THB' }}
+        </ion-col>
+
+        <ion-col align="center" size="3">
+          <ion-icon name="cash-outline" size="large" color="success" *ngIf="p.payment == 'เงินสด'"></ion-icon>
+          <ion-icon name="card-outline" size="large" color="warning" *ngIf="p.payment == 'บัตรเครดิต'"></ion-icon>
+          <!-- <ion-button expand="block"  fill="clear" class="showODT-button-color" (click)='showOrderDetail(p.orderID)'>รายละเอียด</ion-button> -->
+        </ion-col>
+  
+        <ion-col align="center" size="4">
+          {{ p.billDate }}
+        </ion-col> 
+      </ion-row>
+    </ion-grid>
+    </ion-item>
+  </div>
+
+  <div *ngIf="day == '1'">
+    
+  <ion-item (ionChange)="selectDate(date)">
+    <ion-label color="pizza">เลือกวันที่</ion-label>
+    <ion-datetime picker-format="DD MMMM YYYY" display-format="DD MMMM YYYY" placeholder="" [(ngModel)]="date"></ion-datetime>
+  </ion-item>
+
+  <ion-item color="pizza">
+    <ion-grid align-items-center>
+      <ion-row>
+        <ion-col align-self-center align="center" size="2"><ion-label color="light">#</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="3"><ion-label color="light">ยอดขาย</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="3"><ion-label color="light">ประเภท</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="4"><ion-label color="light">วันที่ทำรายการ</ion-label></ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-item>
+
+  <!-- <ion-item *ngFor="let p of viewbill | slice:startIndex:endIndex; let i= index"> -->
+    <ion-item *ngFor="let p of viewbill">
+      <ion-grid align-items-center >
+        <ion-row (click)='showOrderDetail(p.orderID)'>
+          <ion-col align="center" size="2">
+            {{p.orderID}}
+          </ion-col>
+    
+          <ion-col align="center" size="3">
+            {{p.billTotal | currency:'THB' }}
+          </ion-col>
+  
+          <ion-col align="center" size="3">
+            <ion-icon name="cash-outline" size="large" color="success" *ngIf="p.payment == 'เงินสด'"></ion-icon>
+            <ion-icon name="card-outline" size="large" color="warning" *ngIf="p.payment == 'บัตรเครดิต'"></ion-icon>
+            <!-- <ion-button expand="block"  fill="clear" class="showODT-button-color" (click)='showOrderDetail(p.orderID)'>รายละเอียด</ion-button> -->
+          </ion-col>
+    
+          <ion-col align="center" size="4">
+            {{ p.billDate }}
+          </ion-col> 
+        </ion-row>
+      </ion-grid>
+      </ion-item>
+<!-- </ion-item> -->
+  <!-- <ion-footer>
+    <ion-grid class="header">
+      <ion-row>
+        <ion-col align="center"><ion-label color="light">Total :</ion-label></ion-col>
+        <ion-col align="center"><ion-label color="light">{{ getTotal  | currency:'THB'}}</ion-label></ion-col>
+      </ion-row>
+    </ion-grid> -->
+    
+
+    <!-- <ion-item>
+      <ion-grid align-items-center>
+        <ion-row>
+  
+            <ion-col class="ion-hide-sm-down">
+              <ion-button expand="block" shape="round" fill="outline" class="pagebutton" (click)="prevIndex()"><ion-icon name="caret-back-outline"></ion-icon></ion-button>
+            </ion-col>
+  
+            <ion-col *ngFor="let i of getArrayFormnumber(viewbill.lenght); let r = index">
+              <ion-button expand="block" shape="round" fill="outline"  class="pagebutton"(click)="updateIndex(r)">{{r+1}}</ion-button>
+            </ion-col>
+  
+            <ion-col class="ion-hide-sm-down">
+              <ion-button expand="block" shape="round" fill="outline" class="pagebutton" (click)="nextIndex()"><ion-icon name="caret-forward-outline"></ion-icon></ion-button>
+            </ion-col>
+  
+        </ion-row>
+      </ion-grid>
+    </ion-item> -->
+
+  <!-- </ion-footer> -->
+
+</div>
+
+<div *ngIf="day == '2'">
+    
+  <ion-item (ionChange)="selectMonth(month)">
+    <ion-label color="pizza">เลือกเดือน</ion-label>
+    <ion-datetime picker-format="MMMM YYYY" display-format="MMMM YYYY" placeholder="" [(ngModel)]="month"></ion-datetime>
+  </ion-item>
+
+  <ion-item color="pizza">
+    <ion-grid align-items-center>
+      <ion-row>
+        <ion-col align-self-center align="center" size="2"><ion-label color="light">#</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="3"><ion-label color="light">ยอดขาย</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="3"><ion-label color="light">ประเภท</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="4"><ion-label color="light">วันที่ทำรายการ</ion-label></ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-item>
+    <ion-item *ngFor="let p of viewbill">
+      <ion-grid align-items-center >
+        <ion-row (click)='showOrderDetail(p.orderID)'>
+          <ion-col align="center" size="2">
+            {{p.orderID}}
+          </ion-col>
+    
+          <ion-col align="center" size="3">
+            {{p.billTotal | currency:'THB' }}
+          </ion-col>
+  
+          <ion-col align="center" size="3">
+            <ion-icon name="cash-outline" size="large" color="success" *ngIf="p.payment == 'เงินสด'"></ion-icon>
+            <ion-icon name="card-outline" size="large" color="warning" *ngIf="p.payment == 'บัตรเครดิต'"></ion-icon>
+            <!-- <ion-button expand="block"  fill="clear" class="showODT-button-color" (click)='showOrderDetail(p.orderID)'>รายละเอียด</ion-button> -->
+          </ion-col>
+    
+          <ion-col align="center" size="4">
+            {{ p.billDate }}
+          </ion-col> 
+        </ion-row>
+      </ion-grid>
+      </ion-item>
+
+</div>
+
+<div *ngIf="day == '3'">
+    
+  <ion-item>
+    <ion-label color="pizza">เลือกพนักงาน</ion-label>
+      <ion-select [(ngModel)]="empID" (ionChange)="selectEmp(empID)">
+        <ion-item *ngFor="let p of viewemp;">
+          <ion-select-option  *ngIf="p.empID != '2'" [value]="p.empID">{{ p.empName }}</ion-select-option>
+          </ion-item>
+      </ion-select>
+  </ion-item>
+
+  <ion-item (ionChange)="selectMonthEmp(month,empID)">
+    <ion-label color="pizza">เลือกเดือน</ion-label>
+    <ion-datetime picker-format="MMMM YYYY" display-format="MMMM YYYY" placeholder="" [(ngModel)]="month"></ion-datetime>
+  </ion-item>
+
+  <ion-item color="pizza">
+    <ion-grid align-items-center>
+      <ion-row>
+        <ion-col align-self-center align="center" size="2"><ion-label color="light">#</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="3"><ion-label color="light">ยอดขาย</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="3"><ion-label color="light">ประเภท</ion-label></ion-col>
+        <ion-col align-self-center align="center" size="4"><ion-label color="light">วันที่ทำรายการ</ion-label></ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-item>
+    <ion-item *ngFor="let p of viewbill">
+      <ion-grid align-items-center >
+        <ion-row (click)='showOrderDetail(p.orderID)'>
+          <ion-col align="center" size="2">
+            {{p.orderID}}
+          </ion-col>
+    
+          <ion-col align="center" size="3">
+            {{p.billTotal | currency:'THB' }}
+          </ion-col>
+  
+          <ion-col align="center" size="3">
+            <ion-icon name="cash-outline" size="large" color="success" *ngIf="p.payment == 'เงินสด'"></ion-icon>
+            <ion-icon name="card-outline" size="large" color="warning" *ngIf="p.payment == 'บัตรเครดิต'"></ion-icon>
+            <!-- <ion-button expand="block"  fill="clear" class="showODT-button-color" (click)='showOrderDetail(p.orderID)'>รายละเอียด</ion-button> -->
+          </ion-col>
+    
+          <ion-col align="center" size="4">
+            {{ p.billDate }}
+          </ion-col> 
+        </ion-row>
+      </ion-grid>
+      </ion-item>
+
+</div>
+
+<ion-card *ngIf="viewbill == ''">
+  <ion-item color="pizza">
+    
+        <ion-icon name="alert-circle-outline" color="danger"></ion-icon>
+     
+        <ion-label>ไม่มีข้อมูล.</ion-label>
+     
+    </ion-item>
+</ion-card>
+
+</ion-content>
+<ion-footer>
+  <ion-item color="pizza">
+  <ion-grid>
+    <ion-row>
+      <ion-col align="center"><ion-label color="light">Total :</ion-label></ion-col>
+      <ion-col align="center"><ion-label color="light">{{ getTotal  | currency:'THB'}}</ion-label></ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-item>
+</ion-footer>
+

@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="warning" (click)="signOut()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title align="left" color="warning">สมัครใช้งาน</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed">ชื่อผู้ใช้</ion-label>
+          <ion-input type="text" [(ngModel)]="username"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed">รหัสผ่าน</ion-label>
+          <ion-input type="password" [(ngModel)]="pw"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed">ชื่อ</ion-label>
+          <ion-input type="text" [(ngModel)]="empName"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed">ที่อยู่</ion-label>
+          <ion-textarea rows="3" cols="20" placeholder="" [(ngModel)]="empAddress"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed">Email</ion-label>
+          <ion-input type="email" [(ngModel)]="empEmail"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed">เบอร์โทรศัพท์</ion-label>
+          <ion-input type="number" [(ngModel)]="empTel"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="">เลขบัตรประจำตัวประชาชน</ion-label>
+          <ion-input type="number" [(ngModel)]="empCode"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <section class="full-width">
+    <ion-button expand="block" shape="round" fill="outline" color="warning" (click)='confirm()' [disabled]="disabledButton">สร้างบัญชี</ion-button>
+  </section>
+
+  <section class="full-width">
+    <ion-button expand="block" shape="round" fill="clear" color="medium" (click)='signOut()'>คุณมีบัญชีอยู่แล้วใช่ไหม ?</ion-button>
+  </section>
+
+</ion-content>
+

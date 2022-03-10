@@ -1,0 +1,35 @@
+<ion-content>
+
+  <div class="ion-text-end">
+    <ion-button (click)="close()" fill="clear" color="dark">
+      <ion-icon name="close" slot="start"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="ion-padding">
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="pizza"></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list *ngFor="let view of viewtable;">
+    <ion-item *ngIf="view.tableID != '1'">
+      <ion-grid align-items-center >
+        <ion-row>
+            <ion-col align="center" style="margin: 7px;" size="2">{{view.tableNumber}}</ion-col>
+              <ion-col *ngIf="view.tableStatus == 'E'" align="center"><ion-icon name="pizza" color="success" size="large"></ion-icon></ion-col>
+              <ion-col *ngIf="view.tableStatus == 'N'" align="center"><ion-icon name="pizza" color="danger" size="large"></ion-icon></ion-col>
+              <ion-col *ngIf="view.tableStatus == 'I'" align="center"><ion-icon name="pizza" class="icon-I" size="large"></ion-icon></ion-col>
+
+            <ion-col>      
+              <ion-label *ngIf="view.tableStatus == 'I'"align="center" class="icon-I">เลือกไปแล้ว</ion-label>
+              <ion-button expand="block" shape="round" fill="outline" class="reserv-button-color" *ngIf="view.tableStatus == 'E'" (click)='newTable(view.tableID)'>เลือก</ion-button>
+            </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+  </div>
+
+</ion-content>

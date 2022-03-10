@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="pizza" (click)="back()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-item>
+      <ion-label>ประเภท</ion-label>      
+      <ion-select interface="popover" [(ngModel)]="categoryID" (ionChange)="onChange(categoryID)">
+          <ion-select-option [value] = "0">ทั้งหมด</ion-select-option>
+          <ion-item *ngFor="let view of viewcategory;">
+          <ion-select-option [value]="view.categoryID">{{view.categoryName}}</ion-select-option>
+          </ion-item>
+      </ion-select>  
+    </ion-item>              
+    
+  </ion-toolbar>
+
+
+  <ion-item color="pizza">
+    <ion-grid align-items-center>
+      <ion-row>
+          <ion-col align-self-center align="center"><ion-label color="light">ชื่ออาหาร</ion-label></ion-col>
+          <ion-col align-self-center align="center"><ion-label color="light">ประเภท</ion-label></ion-col>
+          <ion-col align-self-center align="center"><ion-label color="light">ราคา</ion-label></ion-col>
+          <ion-col align-self-center align="center"><ion-label color="light">สถานะอาหาร</ion-label></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="pizza"></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let p of viewfood;">
+      <ion-item>
+        <ion-grid align-items-center>
+          <ion-row>
+              <ion-col align="center">{{ p.foodName }}</ion-col>
+              <ion-col align="center">{{ p.categoryName }}</ion-col>
+              <ion-col align="center">{{ p.price }}</ion-col>
+
+              <ion-col *ngIf="p.status == '0'" align="center">
+                <ion-label  color="warning">คงเหลือ</ion-label>
+              </ion-col>
+
+              <ion-col *ngIf="p.status == '1'" align="center">
+                <ion-label color="danger">หมด</ion-label>
+              </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item> 
+
+      <ion-item-options side="end">
+        <ion-item-option color="warning" (click)='update(p.foodID)'>
+          <ion-icon slot="icon-only" name="cut-outline" class="icon-color"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" (click)="delete(p.foodID)">
+          <ion-icon slot="icon-only" name="trash-outline" class="icon-color"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+    </ion-list>
+
+      <ion-grid>
+        <ion-row align="center">
+          <ion-col class="slide">
+            <ion-icon name="arrow-back-circle-outline"></ion-icon><ion-label style="margin-left: 10px;">Slide the menu that you want to edit.</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+</ion-content>

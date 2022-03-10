@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title color="pizza">พนักงาน</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="signOut()">
+        <ion-icon name="caret-down-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-item color="pizza">
+    <ion-grid align-items-center>
+      <ion-row position="fixed">
+          <ion-col align-self-center align="center"><ion-label color="light">#</ion-label></ion-col>
+          <ion-col align-self-center align="center"><ion-label color="light">ชื่อพนักงาน</ion-label></ion-col>
+          <ion-col  align="center"><ion-label color="light"></ion-label></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="pizza"></ion-refresher-content>
+  </ion-refresher>
+
+      <ion-list>
+      <ion-item-sliding *ngFor="let view of viewEmployee;">
+        <ion-item>
+          <ion-grid align-items-center>
+            <ion-row>
+                <ion-col  align="center">{{view.empID}}</ion-col>
+                <ion-col  align="center">{{view.empName}}</ion-col>
+                <ion-col  *ngIf="view.role == '1'" align="center">ออเดอร์</ion-col>
+                <ion-col  *ngIf="view.role == '2'" align="center">คนครัว</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item> 
+
+        <ion-item-options side="end">
+          <ion-item-option color="warning" (click)='update(view.empID)'>
+            <ion-icon slot="icon-only" name="cut-outline" class="icon-color"></ion-icon>
+          </ion-item-option>
+          <ion-item-option color="danger" (click)="delete(view.empID)">
+            <ion-icon slot="icon-only" name="trash-outline" class="icon-color"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+
+      </ion-item-sliding>
+      </ion-list>
+
+      <ion-grid>
+        <ion-row align="center">
+          <ion-col class="slide">
+            <ion-icon name="arrow-back-circle-outline"></ion-icon><ion-label style="margin-left: 10px;">Slide data that you want to edit.</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+</ion-content>
